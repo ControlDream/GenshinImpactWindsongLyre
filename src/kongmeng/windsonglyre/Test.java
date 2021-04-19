@@ -28,7 +28,7 @@ public class Test {
 		int[] key = { KeyEvent.VK_Q, KeyEvent.VK_W, KeyEvent.VK_E, KeyEvent.VK_R, KeyEvent.VK_T, KeyEvent.VK_Y, KeyEvent.VK_U, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_F, KeyEvent.VK_G, KeyEvent.VK_H, KeyEvent.VK_J, KeyEvent.VK_Z, KeyEvent.VK_X, KeyEvent.VK_C, KeyEvent.VK_V, KeyEvent.VK_B, KeyEvent.VK_N, KeyEvent.VK_M };
 		byte[] val = { 0x48, 0x4A, 0x4C, 0x4D, 0x4F, 0x51, 0x53, 0x3C, 0x3E, 0x40, 0x41, 0x43, 0x45, 0x47, 0x30, 0x32, 0x34, 0x35, 0x37, 0x39, 0x3B };
 
-		File sound = new File("./midi/111111111.mid");
+		File sound = new File("./midi/崩坏3rd - Rubia.mid");
 		Sequence seq = MidiSystem.getSequence(sound);
 		long t = seq.getResolution();// 获得一个4分音符的ticks数
 
