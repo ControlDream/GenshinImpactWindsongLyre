@@ -20,26 +20,26 @@ public class Test {
 	static long ttt = 0;
 
 	public static void main(String[] args) throws InvalidMidiDataException, IOException, MidiUnavailableException, InterruptedException, AWTException {
-		rb = new Robot();// ¼üÅÌ²Ù×÷
-		// Æô¶¯ÑÓ³Ù
+		rb = new Robot();// é”®ç›˜æ“ä½œ
+		// å¯åŠ¨å»¶è¿Ÿ
 		for (int i = 5; i > 0; i--) {
 			System.out.println(i);
 			rb.delay(1000);
 		}
 
 		// C C# D D# E F F# G G# A A# B
-		// Ô­Éñ
+		// åŸç¥
 		int[] key = { KeyEvent.VK_Z, KeyEvent.VK_Z, KeyEvent.VK_X, KeyEvent.VK_X, KeyEvent.VK_C, KeyEvent.VK_V, KeyEvent.VK_V, KeyEvent.VK_B, KeyEvent.VK_B, KeyEvent.VK_N, KeyEvent.VK_N, KeyEvent.VK_M, KeyEvent.VK_A, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_F, KeyEvent.VK_F, KeyEvent.VK_G, KeyEvent.VK_G, KeyEvent.VK_H, KeyEvent.VK_H, KeyEvent.VK_J, KeyEvent.VK_Q, KeyEvent.VK_Q, KeyEvent.VK_W, KeyEvent.VK_W, KeyEvent.VK_E, KeyEvent.VK_R, KeyEvent.VK_R, KeyEvent.VK_T, KeyEvent.VK_T, KeyEvent.VK_Y, KeyEvent.VK_Y, KeyEvent.VK_U };
 		// vrc
 //		int[] key = { KeyEvent.VK_Z, KeyEvent.VK_COMMA, KeyEvent.VK_X, KeyEvent.VK_PERIOD, KeyEvent.VK_C, KeyEvent.VK_V, KeyEvent.VK_SLASH, KeyEvent.VK_B, KeyEvent.VK_NUMPAD0, KeyEvent.VK_N, KeyEvent.VK_DECIMAL, KeyEvent.VK_M, KeyEvent.VK_A, KeyEvent.VK_K, KeyEvent.VK_S, KeyEvent.VK_L, KeyEvent.VK_D, KeyEvent.VK_F, KeyEvent.VK_SEMICOLON, KeyEvent.VK_G, KeyEvent.VK_NUMPAD2, KeyEvent.VK_H, KeyEvent.VK_NUMPAD3, KeyEvent.VK_J, KeyEvent.VK_Q, KeyEvent.VK_I, KeyEvent.VK_W, KeyEvent.VK_O, KeyEvent.VK_E, KeyEvent.VK_R, KeyEvent.VK_P, KeyEvent.VK_T, KeyEvent.VK_NUMPAD5, KeyEvent.VK_Y, KeyEvent.VK_NUMPAD6, KeyEvent.VK_U, KeyEvent.VK_1, KeyEvent.VK_8, KeyEvent.VK_2, KeyEvent.VK_9, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_0, KeyEvent.VK_5, KeyEvent.VK_NUMPAD8, KeyEvent.VK_6, KeyEvent.VK_NUMPAD9, KeyEvent.VK_7, KeyEvent.VK_F1, KeyEvent.VK_F8, KeyEvent.VK_F2, KeyEvent.VK_F9, KeyEvent.VK_F3, KeyEvent.VK_F4, KeyEvent.VK_F10, KeyEvent.VK_F5, 111, KeyEvent.VK_F6, 106, KeyEvent.VK_F7 };
-		// Ä£ÄâÍøÕ¾
+		// æ¨¡æ‹Ÿç½‘ç«™
 //		int[] key = { KeyEvent.VK_Z, KeyEvent.VK_COMMA, KeyEvent.VK_X, KeyEvent.VK_PERIOD, KeyEvent.VK_C, KeyEvent.VK_V, KeyEvent.VK_SLASH, KeyEvent.VK_B, KeyEvent.VK_NUMPAD0, KeyEvent.VK_N, KeyEvent.VK_DECIMAL, KeyEvent.VK_M, KeyEvent.VK_A, KeyEvent.VK_K, KeyEvent.VK_S, KeyEvent.VK_L, KeyEvent.VK_D, KeyEvent.VK_F, KeyEvent.VK_SEMICOLON, KeyEvent.VK_G, KeyEvent.VK_NUMPAD2, KeyEvent.VK_H, KeyEvent.VK_NUMPAD3, KeyEvent.VK_J, KeyEvent.VK_Q, KeyEvent.VK_I, KeyEvent.VK_W, KeyEvent.VK_O, KeyEvent.VK_E, KeyEvent.VK_R, KeyEvent.VK_P, KeyEvent.VK_T, KeyEvent.VK_NUMPAD5, KeyEvent.VK_Y, KeyEvent.VK_NUMPAD6, KeyEvent.VK_U, KeyEvent.VK_1, KeyEvent.VK_8, KeyEvent.VK_2, KeyEvent.VK_9, KeyEvent.VK_3, KeyEvent.VK_4, KeyEvent.VK_0, KeyEvent.VK_5, KeyEvent.VK_NUMPAD8, KeyEvent.VK_6, KeyEvent.VK_NUMPAD9, KeyEvent.VK_7 };
 
-		File sound = new File("./midi/°×É«Ïà²¾2 - After All ×º¤ëÏë¤¤.mid");
+		File sound = new File("./midi/ç™½è‰²ç›¸ç°¿2 - After All ç¼€ã‚‹æƒ³ã„.mid");
 		Sequence seq = MidiSystem.getSequence(sound);
 //		play(seq);
 
-		long t = seq.getResolution();// »ñµÃÒ»¸ö4·ÖÒô·ûµÄticksÊı
+		long t = seq.getResolution();// è·å¾—ä¸€ä¸ª4åˆ†éŸ³ç¬¦çš„ticksæ•°
 
 		Track[] tracks = seq.getTracks();
 		for (int ia = 0; ia < tracks.length; ia++) {
@@ -73,9 +73,9 @@ public class Test {
 							if(type<7) {
 
 							int k = message[1];
-							k -= (12 * 4);// VRCÎª3
+							k -= (12 * 4);// VRCä¸º3
 							if (k < 0 || k >= key.length) {
-								System.err.println("Òô¹ì" + iii + " " + "ÎŞ·¨ÊÊÅäÒô·ûk=" +k+"    "+ Integer.toHexString(message[1] & 0xFF));
+								System.err.println("éŸ³è½¨" + iii + " " + "æ— æ³•é€‚é…éŸ³ç¬¦k=" +k+"    "+ Integer.toHexString(message[1] & 0xFF));
 							} else {
 								if (hex.startsWith("9")) {
 									rb.keyPress(key[k]);
@@ -83,30 +83,30 @@ public class Test {
 								} else if (hex.startsWith("8")) {
 									rb.keyRelease(key[k]);
 								}
-//								System.out.println("Òô¹ì" + iii + " " + "´¥·¢Òô·û" + bytesToHexString(message));
+//								System.out.println("éŸ³è½¨" + iii + " " + "è§¦å‘éŸ³ç¬¦" + bytesToHexString(message));
 							}
 							}
 						} else if (hex.startsWith("A")) {
-//							System.out.println("Òô¹ì" + iii + " " + "´¥ºóÒô·û" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "è§¦åéŸ³ç¬¦" + bytesToHexString(message));
 						} else if (hex.startsWith("B")) {
-//							System.out.println("Òô¹ì" + iii + " " + "¿ØÖÆÆ÷±ä»¯" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "æ§åˆ¶å™¨å˜åŒ–" + bytesToHexString(message));
 						} else if (hex.startsWith("C")) {
 							type = (int)(message[1] & 0xFF);
-							System.out.println("Òô¹ì" + iii + " " + "¸Ä±äÀÖÆ÷" + bytesToHexString(message) + "____"+type);
+							System.out.println("éŸ³è½¨" + iii + " " + "æ”¹å˜ä¹å™¨" + bytesToHexString(message) + "____"+type);
 						} else if (hex.startsWith("D")) {
-//							System.out.println("Òô¹ì" + iii + " " + "Í¨µÀ´¥¶¯Ñ¹Á¦" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "é€šé“è§¦åŠ¨å‹åŠ›" + bytesToHexString(message));
 						} else if (hex.startsWith("E")) {
-//							System.out.println("Òô¹ì" + iii + " " + "ÍäÒôÂÖ±ä»»" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "å¼¯éŸ³è½®å˜æ¢" + bytesToHexString(message));
 						} else if (hex.startsWith("FF 03")) {
-							System.out.println("Òô¹ì" + iii + "=>" + new String(hexStringToByteArray(hex.substring(9).replace(" ", ""))));
+							System.out.println("éŸ³è½¨" + iii + "=>" + new String(hexStringToByteArray(hex.substring(9).replace(" ", ""))));
 						} else if (hex.startsWith("FF 04")) {
-							System.out.println("Òô¹ì" + iii + " " + "Ö¸¶¨ÀÖÆ÷=>" + hex);
+							System.out.println("éŸ³è½¨" + iii + " " + "æŒ‡å®šä¹å™¨=>" + hex);
 						} else if (hex.startsWith("FF 51")) {
 							byte[] a = { 0x00, message[3], message[4], message[5] };
 							ttt = bytesToInt2(a, 0) / t;
-							System.out.println("Òô¹ì" + iii + " " + "Ö¸¶¨ËÙ¶È" + hex + "__" + bytesToInt2(a, 0));
+							System.out.println("éŸ³è½¨" + iii + " " + "æŒ‡å®šé€Ÿåº¦" + hex + "__" + bytesToInt2(a, 0));
 						} else {
-							System.out.println("Òô¹ì" + iii + " " + bytesToHexString(message));
+							System.out.println("éŸ³è½¨" + iii + " " + bytesToHexString(message));
 						}
 //					}
 //				}).start();
@@ -116,14 +116,14 @@ public class Test {
 		}
 	}
 
-	// byteÊı×é×ªint
+	// byteæ•°ç»„è½¬int
 	public static int bytesToInt2(byte[] src, int offset) {
 		int value;
 		value = (int) (((src[offset] & 0xFF) << 24) | ((src[offset + 1] & 0xFF) << 16) | ((src[offset + 2] & 0xFF) << 8) | (src[offset + 3] & 0xFF));
 		return value;
 	}
 
-	// byteÊı×é×ª16½øÖÆÎÄ±¾
+	// byteæ•°ç»„è½¬16è¿›åˆ¶æ–‡æœ¬
 	public static final String bytesToHexString(byte[] bArray) {
 		StringBuffer sb = new StringBuffer(bArray.length);
 		String sTemp;
@@ -141,7 +141,7 @@ public class Test {
 		int len = s.length();
 		byte[] b = new byte[len / 2];
 		for (int i = 0; i < len; i += 2) {
-			// Á½Î»Ò»×é£¬±íÊ¾Ò»¸ö×Ö½Ú,°ÑÕâÑù±íÊ¾µÄ16½øÖÆ×Ö·û´®£¬»¹Ô­³ÉÒ»¸ö×Ö½Ú
+			// ä¸¤ä½ä¸€ç»„ï¼Œè¡¨ç¤ºä¸€ä¸ªå­—èŠ‚,æŠŠè¿™æ ·è¡¨ç¤ºçš„16è¿›åˆ¶å­—ç¬¦ä¸²ï¼Œè¿˜åŸæˆä¸€ä¸ªå­—èŠ‚
 			b[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4) + Character.digit(s.charAt(i + 1), 16));
 		}
 		return b;

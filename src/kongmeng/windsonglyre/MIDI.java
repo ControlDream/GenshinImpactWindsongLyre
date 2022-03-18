@@ -23,7 +23,7 @@ public abstract class MIDI {
 		File sound = new File(str);
 		Sequence seq = MidiSystem.getSequence(sound);
 
-		long t = seq.getResolution();// »ñµÃÒ»¸ö4·ÖÒô·ûµÄticksÊý
+		long t = seq.getResolution();// èŽ·å¾—ä¸€ä¸ª4åˆ†éŸ³ç¬¦çš„ticksæ•°
 
 		Track[] tracks = seq.getTracks();
 		for (int ia = 0; ia < tracks.length; ia++) {
@@ -51,24 +51,24 @@ public abstract class MIDI {
 						if (hex.startsWith("FF 51")) {
 							byte[] a = { 0x00, message[3], message[4], message[5] };
 							ttt = bytesToInt2(a, 0) / t;
-							System.out.println("Òô¹ì" + iii + " " + "Ö¸¶¨ËÙ¶È" + hex + "__" + bytesToInt2(a, 0));
+							System.out.println("éŸ³è½¨" + iii + " " + "æŒ‡å®šé€Ÿåº¦" + hex + "__" + bytesToInt2(a, 0));
 						} else if (hex.startsWith("A")) {
-//							System.out.println("Òô¹ì" + iii + " " + "´¥ºóÒô·û" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "è§¦åŽéŸ³ç¬¦" + bytesToHexString(message));
 						} else if (hex.startsWith("B")) {
-//							System.out.println("Òô¹ì" + iii + " " + "¿ØÖÆÆ÷±ä»¯" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "æŽ§åˆ¶å™¨å˜åŒ–" + bytesToHexString(message));
 						} else if (hex.startsWith("C")) {
 							int type = (int) (message[1] & 0xFF);
-							System.out.println("Òô¹ì" + iii + " " + "¸Ä±äÀÖÆ÷" + bytesToHexString(message) + "____" + type);
+							System.out.println("éŸ³è½¨" + iii + " " + "æ”¹å˜ä¹å™¨" + bytesToHexString(message) + "____" + type);
 						} else if (hex.startsWith("D")) {
-//							System.out.println("Òô¹ì" + iii + " " + "Í¨µÀ´¥¶¯Ñ¹Á¦" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "é€šé“è§¦åŠ¨åŽ‹åŠ›" + bytesToHexString(message));
 						} else if (hex.startsWith("E")) {
-//							System.out.println("Òô¹ì" + iii + " " + "ÍäÒôÂÖ±ä»»" + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + "å¼¯éŸ³è½®å˜æ¢" + bytesToHexString(message));
 						} else if (hex.startsWith("FF 03")) {
-							System.out.println("Òô¹ì" + iii + "=>" + new String(hexStringToByteArray(hex.substring(9).replace(" ", ""))));
+							System.out.println("éŸ³è½¨" + iii + "=>" + new String(hexStringToByteArray(hex.substring(9).replace(" ", ""))));
 						} else if (hex.startsWith("FF 04")) {
-							System.out.println("Òô¹ì" + iii + " " + "Ö¸¶¨ÀÖÆ÷=>" + hex);
+							System.out.println("éŸ³è½¨" + iii + " " + "æŒ‡å®šä¹å™¨=>" + hex);
 						} else {
-//							System.out.println("Òô¹ì" + iii + " " + bytesToHexString(message));
+//							System.out.println("éŸ³è½¨" + iii + " " + bytesToHexString(message));
 						}
 						a(iii, message, hex);
 					}
@@ -77,14 +77,14 @@ public abstract class MIDI {
 		}
 	}
 
-	// byteÊý×é×ªint
+	// byteæ•°ç»„è½¬int
 	public static int bytesToInt2(byte[] src, int offset) {
 		int value;
 		value = (int) (((src[offset] & 0xFF) << 24) | ((src[offset + 1] & 0xFF) << 16) | ((src[offset + 2] & 0xFF) << 8) | (src[offset + 3] & 0xFF));
 		return value;
 	}
 
-	// byteÊý×é×ª16½øÖÆÎÄ±¾
+	// byteæ•°ç»„è½¬16è¿›åˆ¶æ–‡æœ¬
 	public static final String bytesToHexString(byte[] bArray) {
 		StringBuffer sb = new StringBuffer(bArray.length);
 		String sTemp;
@@ -102,7 +102,7 @@ public abstract class MIDI {
 		int len = s.length();
 		byte[] b = new byte[len / 2];
 		for (int i = 0; i < len; i += 2) {
-			// Á½Î»Ò»×é£¬±íÊ¾Ò»¸ö×Ö½Ú,°ÑÕâÑù±íÊ¾µÄ16½øÖÆ×Ö·û´®£¬»¹Ô­³ÉÒ»¸ö×Ö½Ú
+			// ä¸¤ä½ä¸€ç»„ï¼Œè¡¨ç¤ºä¸€ä¸ªå­—èŠ‚,æŠŠè¿™æ ·è¡¨ç¤ºçš„16è¿›åˆ¶å­—ç¬¦ä¸²ï¼Œè¿˜åŽŸæˆä¸€ä¸ªå­—èŠ‚
 			b[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4) + Character.digit(s.charAt(i + 1), 16));
 		}
 		return b;
